@@ -1,0 +1,6 @@
+[submodule "2025s-rustling-CreatorMetaSky"]
+	path = 2025s-rustling-CreatorMetaSky
+	url = ./2025s-rustling-CreatorMetaSky
+[submodule "2025s-rcore-CreatorMetaSky"]
+	path = 2025s-rcore-CreatorMetaSky
+	url = ./2025s-rcore-CreatorMetaSky
