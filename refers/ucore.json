@@ -1,0 +1,59 @@
+{
+  "collapsed": false,
+  "color": "blue",
+  "id": 1276990650,
+  "title": "ucore",
+  "windowId": 1958698913,
+  "tabs": [
+    {
+      "active": false,
+      "audible": false,
+      "autoDiscardable": true,
+      "discarded": false,
+      "favIconUrl": "https://www.google.com/favicon.ico",
+      "frozen": false,
+      "groupId": 1276990650,
+      "height": 1006,
+      "highlighted": false,
+      "id": 1958698993,
+      "incognito": false,
+      "index": 0,
+      "lastAccessed": 1743520455425.781,
+      "mutedInfo": {
+        "muted": false
+      },
+      "pinned": false,
+      "selected": false,
+      "status": "complete",
+      "title": "清华大学操作系统 - Google 搜索",
+      "url": "https://www.google.com/search?q=%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&oq=%E6%B8%85%E5%8D%8E%E5%A4%A7%E5%AD%A6%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F&gs_lcrp=EgZjaHJvbWUyBggAEEUYOdIBCDQ4NDdqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8",
+      "width": 2048,
+      "windowId": 1958698913
+    },
+    {
+      "active": false,
+      "audible": false,
+      "autoDiscardable": true,
+      "discarded": false,
+      "favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+      "frozen": false,
+      "groupId": 1276990650,
+      "height": 1006,
+      "highlighted": false,
+      "id": 1958699008,
+      "incognito": false,
+      "index": 1,
+      "lastAccessed": 1743520455005.188,
+      "mutedInfo": {
+        "muted": false
+      },
+      "pinned": false,
+      "selected": false,
+      "status": "complete",
+      "title": "kiukotsu/ucore: 清华大学操作系统课程实验 (OS Kernel Labs)",
+      "url": "https://github.com/kiukotsu/ucore",
+      "width": 2048,
+      "windowId": 1958698913
+    }
+  ]
+}

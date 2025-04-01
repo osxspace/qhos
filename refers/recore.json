@@ -1,0 +1,33 @@
+{
+  "collapsed": false,
+  "color": "green",
+  "id": 1788274408,
+  "title": "recore",
+  "windowId": 1958698913,
+  "tabs": [
+    {
+      "active": false,
+      "audible": false,
+      "autoDiscardable": true,
+      "discarded": false,
+      "frozen": false,
+      "groupId": 1788274408,
+      "height": 1006,
+      "highlighted": false,
+      "id": 1958699005,
+      "incognito": false,
+      "index": 2,
+      "lastAccessed": 1743520460943.77,
+      "mutedInfo": {
+        "muted": false
+      },
+      "pinned": false,
+      "selected": false,
+      "status": "complete",
+      "title": "第一章：应用程序与基本执行环境 - rCore-Tutorial-Book-v3 3.6.0-alpha.1 文档",
+      "url": "https://rcore-os.cn/rCore-Tutorial-Book-v3/chapter1/index.html",
+      "width": 2048,
+      "windowId": 1958698913
+    }
+  ]
+}
