@@ -1,6 +1,8 @@
 [submodule "2025s-rustling-CreatorMetaSky"]
 	path = 2025s-rustling-CreatorMetaSky
-	url = ./2025s-rustling-CreatorMetaSky
+	url = git@github.com:LearningOS/2025s-rustling-CreatorMetaSky.git
+	branch = main
 [submodule "2025s-rcore-CreatorMetaSky"]
 	path = 2025s-rcore-CreatorMetaSky
-	url = ./2025s-rcore-CreatorMetaSky
+	url = git@github.com:LearningOS/2025s-rcore-CreatorMetaSky.git
+	branch = main
