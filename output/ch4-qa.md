@@ -122,8 +122,8 @@ pub fn init_frame_allocator() { // 这个函数设置了物理帧分配器的范
         fn ekernel();
     }
     FRAME_ALLOCATOR.exclusive_access().init(
-        PhysAddr::from(ekernel as usize).ceil(),
-        PhysAddr::from(MEMORY_END).floor(),
+        PhysAddr::from(ekernel as usize).ceil(), // 开始物理地址
+        PhysAddr::from(MEMORY_END).floor(), // pub const MEMORY_END: usize = 0x88000000; 结束物理地址
     );
 }
 ```
