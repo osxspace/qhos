@@ -175,6 +175,9 @@ SV39 定义
 
 satp 设置为 8 的时候，SV39 分页机制被启用，所有 S/U 特权级的访存被视为一个 39 位的虚拟地址，它们需要先经过 MMU 的地址转换流程，如果顺利的话，则会变成一个 56 位的物理地址来访问物理内存；否则则会触发异常，这体现了分页机制的内存保护能力。
 
+在 64 位架构上虚拟地址长度确实应该和位宽一致为 64 位，但是在启用 SV39 分页模式下，只有低 39 位是真正有意义的。SV39 分页模式规定 64 位虚拟地址的 
+这 25 位必须和第 38 位相同，否则 MMU 会直接认定它是一个不合法的虚拟地址。通过这个检查之后 MMU 再取出低 39 位尝试将其转化为一个 56 位的物理地址
+
 - 39 位虚拟地址
 - 56 位的物理页表
 - 需要 64 位的三级页表项来存储映射关系 
@@ -198,7 +201,7 @@ satp 设置为 8 的时候，SV39 分页机制被启用，所有 S/U 特权级�
 
 - ![地址格式图](https://rcore-os.cn/rCore-Tutorial-Book-v3/_images/sv39-va-pa.png)
 
-- ![页表项](https://learningos.cn/os-lectures/lec5/figs/sv39-full.png)
+- ![页表项](https://rcore-os.cn/rCore-Tutorial-Book-v3/_images/sv39-full.png)
 
 ### 物理页号转换物理地址
 
@@ -206,26 +209,29 @@ satp 设置为 8 的时候，SV39 分页机制被启用，所有 S/U 特权级�
 // from multile file
 
 pub const PAGE_SIZE_BITS: usize = 0xc; // page size bits: 12
+
 const PA_WIDTH_SV39: usize = 56; // 56 位物理地址宽度
+
 const PPN_WIDTH_SV39: usize = PA_WIDTH_SV39 - PAGE_SIZE_BITS; // 56 - 12 = 44
 
+// 整型转换为物理页号
 impl From<usize> for PhysPageNum {
     fn from(v: usize) -> Self {
         Self(v & ((1 << PPN_WIDTH_SV39) - 1)) // 将 usize 映射到 PPN[43:0] 的位置
     }
 }
 
-impl From<PhysAddr> for PhysPageNum {
-    fn from(v: PhysAddr) -> Self {
-        assert_eq!(v.page_offset(), 0); // 左移12位后，PPN占据物理地址的[55:12]位
-        v.floor()
+// 物理页号 -> 物理地址
+impl From<PhysPageNum> for PhysAddr {
+    fn from(v: PhysPageNum) -> Self {
+        Self(v.0 << PAGE_SIZE_BITS) // 左移12位后，PPN占据物理地址的[55:12]位，与上图中的地址格式图一致
     }
 }
 ```
 
 ## 如何构建页表结构的
 
-## 虚拟地址到物理地址的转换
+## 虚拟地址到物理地址的转换过程
 
 ## 4k 页表大小是如何跟页表项填充的
 
