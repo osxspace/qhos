@@ -32,3 +32,6 @@
 ## 开源仓库
 
 - https://github.com/kristoff-it/kristos - A minimal OS implemented following "Operating system in 1000 lines of code"
+
+
+https://docs.qq.com/doc/DUGtzRHBaU2FTRWdz 本文档是本期训练营项目阶段信息汇总。请大家参考这个信息，学习相关同学的先进经验和实践方法，提升自己的学习能力和实践能力。
