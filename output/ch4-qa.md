@@ -27,6 +27,10 @@ SV39 定义
 
 举例说明
 
+- ![地址格式图](https://rcore-os.cn/rCore-Tutorial-Book-v3/_images/sv39-va-pa.png)
+
+- ![satp组成](https://learningos.cn/os-lectures/lec5/figs/satp.png)
+
 ## 使用 satp 开启 SV39 的实现原理
 
 ### 概念
@@ -44,7 +48,7 @@ satp 寄存器分为三段，如下图：
 - ASID (16位)：地址空间标识符，用于TLB隔离不同进程 - 可选的，用来降低上下文切换的开销 (目前暂时无用)
 - PPN (44位)：根页表的物理页号（Page Table Number）
 
-### 代码实现
+### 代码实现思路剖析
 
 ```rs
 // main.rs
@@ -154,17 +158,10 @@ pub fn init_frame_allocator() { // 这个函数设置了物理帧分配器的范
 
 /// Get the reference of page(array of bytes)
 pub fn get_bytes_array(&self) -> &'static mut [u8] {
-    let pa: PhysAddr = (*self).into();
-    unsafe { core::slice::from_raw_parts_mut(pa.0 as *mut u8, 4096) }
+    let pa: PhysAddr = (*self).into(); // 根据物理页号获取物理地址起始
+    unsafe { core::slice::from_raw_parts_mut(pa.0 as *mut u8, 4096) } // 获取到 4k 的物理页字节数组
 }
 ```
-
-- 4096 介绍
-- 多少位概念理解 - 阅读书
-- 整理 deepseek AI 聊天
-- 继续往下解答 QA
-- 回答第一个问题
-- 单独跑一个测试用例
 
 ### 获取 token 后填充 satp 寄存器的计算过程
 
@@ -199,7 +196,7 @@ pub fn get_bytes_array(&self) -> &'static mut [u8] {
 
 ## 如何构建页表结构的
 
-
+## 4k 页表大小是如何跟页表项填充的
 
 ## 跳板思路以及为什么要用跳板
 
@@ -216,3 +213,15 @@ pub fn get_bytes_array(&self) -> &'static mut [u8] {
 - memarea 记录了虚拟地址空间的范围
 
 ## 常用的 CSR 寄存器有哪些，都有什么作用，参考书在哪里
+
+## need todo
+
+- 4096 介绍
+
+- 地址空间多少位概念理解 - 阅读书
+- 整理 deepseek AI 聊天 - 并整理到位部分
+
+- 继续往下解答 QA 到 跳板之前
+
+- 回答第一个问题
+- 单独跑一个测试用例
