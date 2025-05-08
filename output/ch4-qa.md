@@ -6,11 +6,11 @@
 
 - loader -> task -> memory_set -> page_table -> memory_area
 
-## satp 开启 SV39 的实现原理
+## 使用 satp 开启 SV39 的实现原理
 
 ### 概念
 
-satp (Supervisor Address Translation and Protection) 的缩写，是 CSR (Control Status Register) 类型寄存器中的一种，它决定了是否启用虚拟内存以及使用哪种页表格式
+satp (Supervisor Address Translation and Protection) 的缩写，是 CSR (Control Status Register) 类型寄存器中的一种，它决定了是否启用虚拟内存以及使用哪种虚拟页表格式
 
 satp 寄存器分为三段，如下图：
 
