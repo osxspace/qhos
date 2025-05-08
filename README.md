@@ -41,3 +41,8 @@ https://docs.qq.com/doc/DUGtzRHBaU2FTRWdz 本文档是本期训练营项目阶�
 - what
 - how
 - why - 最重要 (原子能)
+
+## 资料
+
+- lectures
+- rustsbi
