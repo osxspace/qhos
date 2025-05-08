@@ -6,31 +6,6 @@
 
 - loader -> task -> memory_set -> page_table -> memory_area
 
-
-SV39 定义
-
-39 位虚拟页表转换为 56 位的物理页表，需要 64 位的三级页表项来存储映射关系 
-- 这个概念从哪得出来的
-  - ppt
-  - book
-  - deepseek
-  - trae
-    - 家里
-    - 公司
-  - cursor - no
-
-38 位虚拟页表定义
-56 位物理页表的定义
-64 位页表项的定义
-
-如何通过虚拟地址通过页表项找到物理地址
-
-举例说明
-
-- ![地址格式图](https://rcore-os.cn/rCore-Tutorial-Book-v3/_images/sv39-va-pa.png)
-
-- ![satp组成](https://learningos.cn/os-lectures/lec5/figs/satp.png)
-
 ## 使用 satp 开启 SV39 的实现原理
 
 ### 概念
@@ -158,8 +133,8 @@ pub fn init_frame_allocator() { // 这个函数设置了物理帧分配器的范
 
 /// Get the reference of page(array of bytes)
 pub fn get_bytes_array(&self) -> &'static mut [u8] {
-    let pa: PhysAddr = (*self).into(); // 根据物理页号获取物理地址起始
-    unsafe { core::slice::from_raw_parts_mut(pa.0 as *mut u8, 4096) } // 获取到 4k 的物理页字节数组
+    let pa: PhysAddr = (*self).into(); // 根据物理页号获取物理地址起始 - 详见下面物理页号转换物理地址
+    unsafe { core::slice::from_raw_parts_mut(pa.0 as *mut u8, 4096) } // 获取到 4k 的物理页大小的字节数组
 }
 ```
 
@@ -194,7 +169,63 @@ pub fn get_bytes_array(&self) -> &'static mut [u8] {
 
 ## SV39 虚拟地址空间结构
 
+SV39 定义
+
+### 位大小关系
+
+satp 设置为 8 的时候，SV39 分页机制被启用，所有 S/U 特权级的访存被视为一个 39 位的虚拟地址，它们需要先经过 MMU 的地址转换流程，如果顺利的话，则会变成一个 56 位的物理地址来访问物理内存；否则则会触发异常，这体现了分页机制的内存保护能力。
+
+- 39 位虚拟地址
+- 56 位的物理页表
+- 需要 64 位的三级页表项来存储映射关系 
+
+- 这个概念从哪得出来的
+  - ppt
+  - book
+  - deepseek
+  - trae
+    - 家里
+    - 公司
+  - cursor - no
+
+38 位虚拟页表定义
+56 位物理页表的定义
+64 位页表项的定义
+
+如何通过虚拟地址通过页表项找到物理地址
+
+举例说明
+
+- ![地址格式图](https://rcore-os.cn/rCore-Tutorial-Book-v3/_images/sv39-va-pa.png)
+
+- ![页表项](https://learningos.cn/os-lectures/lec5/figs/sv39-full.png)
+
+### 物理页号转换物理地址
+
+```rs
+// from multile file
+
+pub const PAGE_SIZE_BITS: usize = 0xc; // page size bits: 12
+const PA_WIDTH_SV39: usize = 56; // 56 位物理地址宽度
+const PPN_WIDTH_SV39: usize = PA_WIDTH_SV39 - PAGE_SIZE_BITS; // 56 - 12 = 44
+
+impl From<usize> for PhysPageNum {
+    fn from(v: usize) -> Self {
+        Self(v & ((1 << PPN_WIDTH_SV39) - 1)) // 将 usize 映射到 PPN[43:0] 的位置
+    }
+}
+
+impl From<PhysAddr> for PhysPageNum {
+    fn from(v: PhysAddr) -> Self {
+        assert_eq!(v.page_offset(), 0); // 左移12位后，PPN占据物理地址的[55:12]位
+        v.floor()
+    }
+}
+```
+
 ## 如何构建页表结构的
+
+## 虚拟地址到物理地址的转换
 
 ## 4k 页表大小是如何跟页表项填充的
 
