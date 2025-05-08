@@ -1,6 +1,6 @@
 # ENV NOTES 开发环境搭建
 
-## 将 ./assets/devcontainer-rcore 目录下的 devcontainer 配置文件放到工程的 .devcontainer 中
+## 将 assets/devcontainer-rcore 目录下的 devcontainer 配置文件放到工程的 .devcontainer 中
 
 ### Dockerfile 中 rust 版本不一致问题
 
