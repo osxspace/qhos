@@ -6,6 +6,27 @@
 
 - loader -> task -> memory_set -> page_table -> memory_area
 
+
+SV39 定义
+
+39 位虚拟页表转换为 56 位的物理页表，需要 64 位的三级页表项来存储映射关系 
+- 这个概念从哪得出来的
+  - ppt
+  - book
+  - deepseek
+  - trae
+    - 家里
+    - 公司
+  - cursor - no
+
+38 位虚拟页表定义
+56 位物理页表的定义
+64 位页表项的定义
+
+如何通过虚拟地址通过页表项找到物理地址
+
+举例说明
+
 ## 使用 satp 开启 SV39 的实现原理
 
 ### 概念
@@ -24,6 +45,26 @@ satp 寄存器分为三段，如下图：
 - PPN (44位)：根页表的物理页号（Page Table Number）
 
 ### 代码实现
+
+```rs
+// main.rs
+
+pub fn rust_main() -> ! {
+    ...
+    mm::init(); // memory init
+    ...
+}
+```
+
+```rs
+// mm/mod.rs
+
+pub fn init() {
+    heap_allocator::init_heap();
+    frame_allocator::init_frame_allocator();
+    KERNEL_SPACE.exclusive_access().activate(); // 激活 SV39 多级页表虚拟内存管理机制
+}
+```
 
 ```rs
 // memory_set.rs
@@ -108,7 +149,24 @@ pub fn init_frame_allocator() { // 这个函数设置了物理帧分配器的范
 }
 ```
 
-### token 计算过程
+```rs
+// address.rs
+
+/// Get the reference of page(array of bytes)
+pub fn get_bytes_array(&self) -> &'static mut [u8] {
+    let pa: PhysAddr = (*self).into();
+    unsafe { core::slice::from_raw_parts_mut(pa.0 as *mut u8, 4096) }
+}
+```
+
+- 4096 介绍
+- 多少位概念理解 - 阅读书
+- 整理 deepseek AI 聊天
+- 继续往下解答 QA
+- 回答第一个问题
+- 单独跑一个测试用例
+
+### 获取 token 后填充 satp 寄存器的计算过程
 
 假设我们有以下情况：
 
@@ -137,12 +195,11 @@ pub fn init_frame_allocator() { // 这个函数设置了物理帧分配器的范
 - ASID （16位 44-59）： 0000 0000 0000 0000 = 0，未使用地址空间标识符
 - PPN （44位 0-43）： 0000 0000 0000 0000 0000 0000 0000 0001 0010 0011 0100 0101 = 0x12345，根页表的物理页号
 
-
-## SV39 虚拟地址空间结构以
+## SV39 虚拟地址空间结构
 
 ## 如何构建页表结构的
 
-## 常用的 CSR 寄存器有哪些，都有什么作用，参考书在哪里
+
 
 ## 跳板思路以及为什么要用跳板
 
@@ -158,3 +215,4 @@ pub fn init_frame_allocator() { // 这个函数设置了物理帧分配器的范
 
 - memarea 记录了虚拟地址空间的范围
 
+## 常用的 CSR 寄存器有哪些，都有什么作用，参考书在哪里
