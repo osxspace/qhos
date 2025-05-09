@@ -1,0 +1,24 @@
+{
+    "name": "arceos",
+    "build": {
+        "dockerfile": "Dockerfile"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "rust-lang.rust-analyzer",
+                "vadimcn.vscode-lldb",
+                "ms-azuretools.vscode-docker",
+                "tamasfe.even-better-toml",
+                "fill-labs.dependi",
+                "ms-vscode.makefile-tools",
+                "zhwu95.riscv"
+            ],
+            "settings": {
+                "editor.formatOnSave": true
+            }
+        }
+    }
+    // "workspaceMount": "source=${localWorkspaceFolder},target=/mnt,type=bind,consistency=cached",
+    // "workspaceFolder": "/mnt"
+}
