@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:24.04
 
 RUN apt update && apt install -y \
     wget \
@@ -22,9 +22,14 @@ RUN apt update && apt install -y \
     rm -rf /var/lib/apt/lists/*
 
 # 安装 Rust 和 cargo-binutils
-RUN curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-ENV PATH="/root/.cargo/bin:${PATH}"
-RUN cargo install cargo-binutils
+ENV PATH="/root/.cargo/bin:${PATH}" \
+    RUST_VERSION=nightly-2024-09-04
+RUN set -eux; \
+    curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs -o rustup-init; \
+    chmod +x rustup-init; \
+    ./rustup-init -y --no-modify-path --profile minimal --default-toolchain $RUST_VERSION; \
+    rm rustup-init;
+RUN cargo install cargo-binutils --locked
 
 # 安装 musl toolchains
 WORKDIR /opt/musl
