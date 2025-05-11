@@ -12,5 +12,5 @@
 
 ### arceos
 
-- 2025s-arceos-879650736 
+- 2025s-arceos-879650736
 - 2025s-arceos-YangW796
