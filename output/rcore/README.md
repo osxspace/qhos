@@ -14,3 +14,7 @@
 ## 手写思路
 
 - zcore
+
+## 进化过程
+
+libos -> batchos -> taskos -> asos -> processos
