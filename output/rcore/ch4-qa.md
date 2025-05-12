@@ -109,7 +109,7 @@ impl FrameTracker {
     /// Create a new FrameTracker
     pub fn new(ppn: PhysPageNum) -> Self {
         // page cleaning
-        let bytes_array = ppn.get_bytes_array(); // 在这里将物理页的内存清零
+        let bytes_array = ppn.get_bytes_array(); // 在这里根据物理页号，获取物理地址，将物理页的内存清零
         for i in bytes_array {
             *i = 0;
         }
@@ -201,8 +201,6 @@ satp 设置为 8 的时候，SV39 分页机制被启用，所有 S/U 特权级�
 
 - ![地址格式图](https://rcore-os.cn/rCore-Tutorial-Book-v3/_images/sv39-va-pa.png)
 
-- ![页表项](https://rcore-os.cn/rCore-Tutorial-Book-v3/_images/sv39-full.png)
-
 ### 物理页号转换物理地址
 
 ```rs
@@ -232,6 +230,62 @@ impl From<PhysPageNum> for PhysAddr {
 ## 如何构建页表结构的
 
 ## 虚拟地址到物理地址的转换过程
+
+- ![页表项](https://rcore-os.cn/rCore-Tutorial-Book-v3/_images/sv39-full.png)
+
+```rs
+// src/mm/address.rs
+
+impl VirtPageNum {
+    /// Get the indexes of the page table entry
+    pub fn indexes(&self) -> [usize; 3] {
+        let mut vpn = self.0;
+        let mut idx = [0usize; 3];
+        for i in (0..3).rev() {
+            idx[i] = vpn & 511;  // 511 = 0b111111111 (9位掩码)
+            vpn >>= 9;
+        }
+        idx
+    }
+}
+```
+
+这个方法的实现原理：
+
+1. **输入参数**：`self.0` 是27位的虚拟页号(VPN)，包含三级索引
+
+2. **分解过程**：
+   - 从最低级(L0)到最高级(L2)反向遍历
+   - 每次取VPN的低9位作为当前级索引(511的二进制正好是9个1)
+   - 然后右移9位准备处理下一级索引
+
+3. **结果存储**：
+   - `idx[0]` 存储L2页表索引(最高级)
+   - `idx[1]` 存储L1页表索引
+   - `idx[2]` 存储L0页表索引(最低级)
+
+例如，对于虚拟页号0x123456：
+1. 第一次循环(i=2): 取低9位(0x156)存入idx[2]，右移后vpn=0x246
+2. 第二次循环(i=1): 取低9位(0x246)存入idx[1]，右移后vpn=0x0
+3. 第三次循环(i=0): 取低9位(0x0)存入idx[0]
+
+这样就将27位VPN分解成了三级9位索引，用于后续的页表查找。
+
+虚拟页号0x123456取低9位得到0x156的计算过程如下：
+
+1. **二进制表示**：
+   - 0x123456 = 0001 0010 0011 0100 0101 0110 (24位二进制表示)
+
+2. **取低9位**：
+   - 只需要最后9位：0101 0110
+   - 转换为十六进制就是0x156
+
+3. **数学计算**：
+   - 使用位掩码操作：0x123456 & 0x1FF
+   - 0x1FF = 511 = 二进制111111111 (9个1)
+   - 0x123456 & 0x1FF = 0x156
+
+这个计算对应于代码中的`vpn & 511`操作，511的二进制正好是9个1，所以这个位与操作可以提取出虚拟页号的低9位。
 
 ## 4k 页表大小是如何跟页表项填充的
 
