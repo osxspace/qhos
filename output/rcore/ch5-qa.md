@@ -1,6 +1,10 @@
 # CH5 QA
 
-# initproc 初始化流程
+## link_app.S 中的 incbin 汇编
+
+## kernel_stack 的变化和流程
+
+## initproc 初始化流程
 
 ## fork 的核心流程
 
