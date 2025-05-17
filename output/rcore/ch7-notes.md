@@ -1,0 +1,26 @@
+# CH7 进程间通信
+
+- 理论
+  - cat | grep 管道例子
+  - 进程间通信的几种方式
+  - 直接通信、间接通信
+  - 阻塞
+  - 缓冲方式
+  - 管道
+    - 两个不同的进程如何看到和处理同一个 pipe - 用 shell
+    - 消息队列
+    - share memory - 同步机制
+    - signal - trapcontext
+    - 查找例子
+- 实践
+    - 软中断和硬中断
+    - 代码示例驱动
+      - pipe
+      - signal
+    - PipeRingBuffer
+    - 实现支持重定向
+    - 先有实现再有概念
+- 思考
+  - go 语言中的 pipe 实现机制
+  - socket 为什么是进程间通信
+  - write read send recv 区别
