@@ -39,5 +39,5 @@
 - processos - ch5
 - fos - ch6
 - ipcos - ch7
-- threados - ch8
+- tcos - ch8
 - networkos - ch9
