@@ -21,6 +21,10 @@
 - test cases
 - write answer
 
+### 思路总结三
+
+- 给代码加注释 - 避免读代码进度慢
+
 ## 手写思路
 
 - zcore
