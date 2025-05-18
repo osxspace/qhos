@@ -15,10 +15,10 @@
 
 ### 思路总结二
 
-- rcore book
 - slides
+- rcore book
 - diff codes
-- test cases
+- test cases - 这个没细看
 - write answer
 
 ### 思路总结三
