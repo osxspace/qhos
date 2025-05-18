@@ -2,6 +2,8 @@
 
 ## 学习思路
 
+### 思路总结一
+
 - chenyu 老师的视频
   - 课上 PPT 学习和整理
   - 课上问题思考
@@ -10,6 +12,14 @@
 - 完成课后代码练习
 - 完成课后问答题
 - 重新阅读 rcore-tutorial 深入理解
+
+### 思路总结二
+
+- rcore book
+- slides
+- diff codes
+- test cases
+- write answer
 
 ## 手写思路
 
