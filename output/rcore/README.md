@@ -39,5 +39,5 @@
 - processos - ch5
 - fos - ch6
 - ipcos - ch7
-- tcos - ch8
+- tcos - ch8 - syncmutexos | thread coroutine os
 - networkos - ch9
