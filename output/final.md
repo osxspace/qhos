@@ -2,6 +2,12 @@
 
 ## 学习方法
 
+- when
+- what
+- how
+- why
+- build
+
 ## 学习记录
 
 ## 学习内容
