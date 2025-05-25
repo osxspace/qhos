@@ -28,7 +28,7 @@
 - [rustling](https://github.com/LearningOS/2025s-rustling-CreatorMetaSky)
 - [rcore](https://github.com/LearningOS/2025s-rcore-CreatorMetaSky)
 - [ucore](https://github.com/LearningOS/2025s-arceos-CreatorMetaSky)
-- [学习笔记](https://github.com/osxspace/qhos) - 记录了一些学习笔记 - 记录的有些凌乱
+- [qhos](https://github.com/osxspace/qhos) - 记录了一些学习笔记 - 记录的有些凌乱
 
 ## 各阶段学习内容总结
 
