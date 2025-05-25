@@ -32,7 +32,7 @@
 
 ## 各阶段学习内容总结
 
-### rustling
+### 第一阶段 rustling
 
 rustling 很久之前曾经刷过一遍了，这次是温故知新，复习了以下知识点：
 
@@ -43,22 +43,41 @@ rustling 很久之前曾经刷过一遍了，这次是温故知新，复习了�
 - 包管理机制
 - 使用 async await
 
-### rcore 学到了操作系统的核心：
+### 第二阶段 rcore
+
+在学习 rcore 的过程中，首先通读了一遍 [rCore-Tutorial-Guide](https://learningos.cn/rCore-Tutorial-Guide-2025S)， 发现其中大部分章节只是罗列了代码的改动，对于基础知识原理，并没有过多的介绍。
+又开始阅读学习 [rCore-Book](https://rcore-os.cn/rCore-Tutorial-Book-v3)，后续配合陈渝老师导学阶段的视频(2022年教学视频)，才逐渐走上了学习的正轨。学到了以下知识：
+
+**构建操作系统的步骤**
+
+- env setup - 模拟器搭建裸机运行环境
+- libos - 在内核上跑一个最简单的程序
+- batchos - 支持批量运行多个程序 - 引入特权级机制
+- taskos - 实现分时多任务执行
+- asos - 地址空间以及映射
+- pos - 进程
+- fos - 文件系统
+- ipcos - 进程建通信
+- tcos - 线程、协程
+
+**操作系统内核核心组件**
 
 - 地址空间
-- 进程
-- 文件
+- 进程管理和切换
+- 文件系统
 
-- env - ch0
-- libos - ch1
-- batchos - ch2
-- taskos - ch3 
-- asos - ch4
-- processos - ch5
-- fos - ch6
-- ipcos - ch7
-- tcos - ch8 - syncmutexos | thread coroutine os
-- networkos - ch9
+**学到的具体知识点**
+
+- 程序的内存布局结构、如何通过 linker.ld 去修改程序布局
+- 页表机制以及虚拟地址到物理地址的映射方式
+- 进程的协作式调度和抢占式调度以及不同的调度算法的历史演进
+- 文件系统 inode 的结构组织方式，为深入理解一切皆 io 打下基础
+- 从进程发展的历史的角度去理解 fork exec spawn
+- 进程间通信 pipe 和 shell
+- 从操作系统源码深入的理解进程、线程、绿色线程以及他们如何配置的
+- 理解锁、同步的概念
+
+通过上述知识的学习，终于明白了操作系统是为上层应用开发提供硬件抽象的一种系统软件实现，也为我揭开了操作系统的神秘面纱
 
 ### arceos 学习内容
 
