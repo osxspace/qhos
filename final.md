@@ -25,9 +25,10 @@
 
 跟着老师和同学们一起学习用的代码仓库，里面包含了每次作业的提交内容
 
-- [x](https://github.com/LearningOS/2025s-rustling-CreatorMetaSky)
-- [x](https://github.com/LearningOS/2025s-rcore-CreatorMetaSky)
-- [x](https://github.com/LearningOS/2025s-arceos-CreatorMetaSky)
+- [rustling](https://github.com/LearningOS/2025s-rustling-CreatorMetaSky)
+- [rcore](https://github.com/LearningOS/2025s-rcore-CreatorMetaSky)
+- [ucore](https://github.com/LearningOS/2025s-arceos-CreatorMetaSky)
+- [学习笔记](https://github.com/osxspace/qhos) - 记录的有些凌乱
 
 ## 各阶段学习内容总结
 
