@@ -1,0 +1,110 @@
+{
+  "collapsed": false,
+  "color": "blue",
+  "id": 1700638258,
+  "shared": false,
+  "title": "ariel-os",
+  "windowId": 1957050833,
+  "tabs": [
+    {
+      "active": false,
+      "audible": false,
+      "autoDiscardable": true,
+      "discarded": false,
+      "favIconUrl": "https://www.gstatic.com/images/branding/searchlogo/ico/favicon.ico",
+      "frozen": false,
+      "groupId": 1700638258,
+      "height": 1041,
+      "highlighted": false,
+      "id": 1957050735,
+      "incognito": false,
+      "index": 0,
+      "lastAccessed": 1748337916874.162,
+      "mutedInfo": {
+        "muted": false
+      },
+      "pinned": false,
+      "selected": false,
+      "status": "complete",
+      "title": "ariel-os - Google 搜索",
+      "url": "https://www.google.com/search?q=ariel-os&oq=ariel-os&gs_lcrp=EgRlZGdlKgYIABBFGDkyBggAEEUYOTIHCAEQABiABDIHCAIQABiABDIHCAMQABiABDIHCAQQABiABDIHCAUQABiABDIHCAYQABiABDIHCAcQABiABDIHCAgQABiABNIBCDI2OTdqMGoxqAIAsAIA&sourceid=chrome&ie=UTF-8",
+      "width": 1514,
+      "windowId": 1957050833
+    },
+    {
+      "active": false,
+      "audible": false,
+      "autoDiscardable": true,
+      "discarded": false,
+      "favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+      "frozen": true,
+      "groupId": 1700638258,
+      "height": 1041,
+      "highlighted": false,
+      "id": 1957050811,
+      "incognito": false,
+      "index": 1,
+      "lastAccessed": 1748336779472.839,
+      "mutedInfo": {
+        "muted": false
+      },
+      "pinned": false,
+      "selected": false,
+      "status": "complete",
+      "title": "ariel-os/src/ariel-os-rt/src at main · ariel-os/ariel-os",
+      "url": "https://github.com/ariel-os/ariel-os/tree/main/src/ariel-os-rt/src",
+      "width": 1514,
+      "windowId": 1957050833
+    },
+    {
+      "active": false,
+      "audible": false,
+      "autoDiscardable": true,
+      "discarded": false,
+      "favIconUrl": "https://ariel-os.github.io/ariel-os/dev/docs/book/favicon.svg",
+      "frozen": true,
+      "groupId": 1700638258,
+      "height": 1041,
+      "highlighted": false,
+      "id": 1957050815,
+      "incognito": false,
+      "index": 2,
+      "lastAccessed": 1748336851208.032,
+      "mutedInfo": {
+        "muted": false
+      },
+      "pinned": false,
+      "selected": false,
+      "status": "complete",
+      "title": "Async Executors - Ariel OS manual",
+      "url": "https://ariel-os.github.io/ariel-os/dev/docs/book/async-support.html",
+      "width": 1514,
+      "windowId": 1957050833
+    },
+    {
+      "active": false,
+      "audible": false,
+      "autoDiscardable": true,
+      "discarded": false,
+      "favIconUrl": "https://github.githubassets.com/favicons/favicon.svg",
+      "frozen": true,
+      "groupId": 1700638258,
+      "height": 1041,
+      "highlighted": false,
+      "id": 1957050818,
+      "incognito": false,
+      "index": 3,
+      "lastAccessed": 1748336985968.879,
+      "mutedInfo": {
+        "muted": false
+      },
+      "pinned": false,
+      "selected": false,
+      "status": "complete",
+      "title": "Ariel OS",
+      "url": "https://github.com/ariel-os",
+      "width": 1514,
+      "windowId": 1957050833
+    }
+  ]
+}
