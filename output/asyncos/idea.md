@@ -15,3 +15,22 @@
   - 建立任务 - 函数上下文 - future 之间的关联关系
   - 在调度的时候，while future poll 如果有返回结果，就关联返回结果，最终能通过 channel 通知要返回的结果
   - future 的返回结果，返回到任务，通过 channel 再发回去
+  
+```mermaid
+sequenceDiagram
+  participant User as 用户代码
+  participant Scheduler as 协程调度器
+  participant Worker as 协程工作线程
+  participant Executor as Future执行器
+  participant Syscall as 系统调用
+  
+  User->>Scheduler: 通过channel提交任务
+  Scheduler->>Worker: 分配任务到协程池
+  Worker->>Worker: 保存当前上下文
+  Worker->>Worker: 加载任务上下文
+  Worker->>+Executor: 执行函数(产生Future)
+  Executor->>Syscall: 发起异步I/O
+  Syscall-->>Executor: I/O完成事件
+  Executor->>Worker: 唤醒关联任务
+  Worker->>User: 通过channel返回结果
+```
