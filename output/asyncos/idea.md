@@ -34,3 +34,10 @@ sequenceDiagram
   Executor->>Worker: 唤醒关联任务
   Worker->>User: 通过channel返回结果
 ```
+
+- 长期要学习的目标
+  - 网络编程 - 操作系统级别实现 posix api 系统调用
+  - 网络协议 - 操作系统级别支持网络协议栈
+  - IO 多路复用
+  - 高并发异步编程
+  - 网络驱动 - tun 驱动支持 dpdk 支持
