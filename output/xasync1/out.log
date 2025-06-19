@@ -1,0 +1,51 @@
+zig run xasync.zig
+main thread = 162013
+executor size = 96
+executor address: 0x7f42ff0a0000
+the func ptr = null
+base_coro address: 0x7f42ff0a0080
+the func ptr = anyopaque@10e6050
+executor_coro address: 0x7f42ff0a0100
+the delay func type = fn () void, func ptr = 0x10e7060
+the func ptr = anyopaque@10e7060
+task_coro size = 128
+task_coro address: 0x7f42ff0a0180
+will execute call
+current coro address: 0x7f42ff0a0180
+delay comes in...
+sleep comes in
+prepare to create timer
+Timer registered with event loop
+before schedule
+Future size: 32, address: 0x7f42fdc9ff48
+begin schedule
+ready queue count = 1
+after schedule
+hello world
+switch to executor run
+executor_coro address: 0x7f42ff0a0100
+will execute call
+current coro address: 0x7f42ff0a0100
+prepare to executor run
+executor address after cast: 0x7f42ff0a0000
+------------- the executor run loop ------------
+will begin process ready queue
+will begin process ready queue 1
+will begin process ready queue 2
+poll timer is completed = false
+all futures waiting, switching to base...
+timer invoke ...
+Timer completed!
+the thread id = 162013
+begin schedule
+ready queue count = 1
+switch to executor run
+executor_coro address: 0x7f42ff0a0100
+will begin process ready queue
+will begin process ready queue 1
+will begin process ready queue 2
+poll timer is completed = true
+fut done
+poll timer is completed = true
+fut done
+Executor finished, switching to task...
