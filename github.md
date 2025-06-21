@@ -7,3 +7,11 @@
 - [廖东海](https://github.com/CtrlZ233)
 
 ## 核心组织列表
+
+- [rcore](https://github.com/rcore-os)
+- arceos-org
+- arcoes-hypervisor
+- starry-next
+- oscamp
+- asyncos
+- LearningOS
